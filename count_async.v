@@ -32,7 +32,7 @@ module count_async #(
     buffer #(.NUM_BUFFERS(ARB_DELAY - ORG_DELAY))  arbitr_buffer (.in(origin_clk), .out(grant_ack));
     
     // Async Count Delay
-    buffer #(.NUM_BUFFERS(CNT_DELAY))         u_cnt_clk  (.in(grant_ack),  .out(cnt_clk));
+    buffer #(.NUM_BUFFERS(CNT_DELAY))         cnt_buffer  (.in(grant_ack),  .out(cnt_clk));
 
     // Origin capture (half less delay than grant delay)
     always @(posedge origin_clk or negedge resetn) begin
